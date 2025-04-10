@@ -9,8 +9,9 @@
 body {
   font-family: Poppins, sans-serif;
   display: grid;
-  grid-template-columns: 240px 1fr;
-  grid-template-rows: 64px auto;
+  grid-template-columns: max-content 1fr;
+  /* grid-template-rows: 4rem auto; */
+  grid-template-rows: 4rem minmax(calc(100vh - 4rem), auto);
   margin: 0;
 }
 
@@ -21,15 +22,19 @@ img {
 .mainNav {
   grid-row: 1 / -1;
   grid-column: 1 / 2;
-  background-color: #white;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
+  max-height: 100vh;
+  position: sticky;
+  top: 0;
+  padding-right: var(--default-padding);
 }
 
 .topnav {
   grid-row: 1 / 2;
   grid-column: 2 / -1;
-  background-color: #white;
+  background-color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -71,9 +76,52 @@ img {
 main {
   grid-row: 2 / -1;
   grid-column: 2 / -1;
-  background-color: #eee;
+  background-color: var(--grey);
+  display: grid;
+  gap: var(--default-padding);
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: min-content;
+  padding: var(--default-padding);
 }
 
+main > :nth-child(1) {
+  grid-column: span 2;
+}
+main > :nth-child(2) {
+  grid-column: span 2;
+}
+
+main > .grid-half {
+  grid-column: span 1;
+}
+
+main > figure {
+  margin: 0;
+}
+.summary {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(var(--default-padding) / 2) var(--default-padding);
+  border-radius: 4px;
+}
+
+.summary article {
+  padding: calc(var(--default-padding) / 2) 0;
+}
+
+.summary .number {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-left: calc(var(--default-padding) / 2);
+}
+.separated {
+  width: 2px;
+  background-color: var(--grey);
+  align-self: stretch;
+}
 .mainNav_LinkLogo {
   padding-left: var(--default-padding);
   padding-top: var(--default-padding);
@@ -111,6 +159,24 @@ main {
   padding-top: var(--default-padding);
 }
 
+.mainNav_menu li {
+  margin-top: 1rem;
+}
+
 .mainNav_menus:last-child {
   padding-bottom: var(--default-padding);
+}
+
+.btn {
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: calc(var(--default-padding) / 2) calc(var(--default-padding));
+}
+
+.summary .btn {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
 }
